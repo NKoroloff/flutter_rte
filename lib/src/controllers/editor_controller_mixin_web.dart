@@ -10,7 +10,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 abstract class PlatformSpecificMixin {
   ///
-  String viewId = '';
+  String viewId = 'flutter-html-editor-${DateTime.now().millisecondsSinceEpoch}';
 
   ///
   final String filePath = 'packages/flutter_rte/lib/assets/document.html';
