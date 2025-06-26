@@ -10,18 +10,16 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 abstract class PlatformSpecificMixin {
   ///
-  String viewId = 'flutter-html-editor-${DateTime.now().millisecondsSinceEpoch}';
+  String viewId = 'flutter-html--editor-${DateTime.now().millisecondsSinceEpoch}';
 
   ///
   final String filePath = 'packages/flutter_rte/lib/assets/document.html';
 
   ///
-  WebViewController get editorController =>
-      throw Exception('webview controller does not exist on web.');
+  WebViewController get editorController => throw Exception('webview controller does not exist on web.');
 
   ///
-  set editorController(WebViewController controller) =>
-      throw Exception('webview controller does not exist on web.');
+  set editorController(WebViewController controller) => throw Exception('webview controller does not exist on web.');
 
   ///
   StreamSubscription<html.MessageEvent>? _eventSub;
@@ -38,8 +36,7 @@ abstract class PlatformSpecificMixin {
     if (_c == null) return;
     if (!(_c?.initialized ?? false) && data['type'] != 'toIframe: initEditor') {
       log('HtmlEditorController error:',
-          error:
-              'HtmlEditorController called an editor widget that\n does not exist.\n'
+          error: 'HtmlEditorController called an editor widget that\n does not exist.\n'
               'This may happen because the widget\n'
               'initialization has been called but not completed,\n'
               'or because the editor widget was destroyed.\n'
@@ -52,8 +49,7 @@ abstract class PlatformSpecificMixin {
   }
 
   ///
-  Future<void> init(
-      BuildContext initBC, double initHeight, HtmlEditorController c) async {
+  Future<void> init(BuildContext initBC, double initHeight, HtmlEditorController c) async {
     await _eventSub?.cancel();
     _eventSub = html.window.onMessage.listen((event) {
       c.processEvent(event.data);
