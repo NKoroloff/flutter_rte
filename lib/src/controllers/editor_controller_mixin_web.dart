@@ -4,14 +4,15 @@ import 'dart:developer';
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
 // ignore: avoid_web_libraries_in_flutter
-import 'dart:ui' as ui;
+import 'dart:ui_web' as ui_web;
 import 'package:flutter/material.dart';
 import 'package:flutter_rte/src/controllers/editor_controller.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 void registerViewFactory(String viewId, dynamic Function(int) cb) {
   // ignore: undefined_prefixed_name
-  ui.platformViewRegistry.registerViewFactory(viewId, cb);
+  //ui_web!!!
+  ui_web.platformViewRegistry.registerViewFactory(viewId, cb);
 }
 
 abstract class PlatformSpecificMixin {
